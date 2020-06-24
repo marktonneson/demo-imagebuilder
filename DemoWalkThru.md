@@ -9,6 +9,7 @@
 * Install & Config
 
 Prior to getting started with image builder, the software must first be installed.
+
 For RHEL 7:
 ```
 [root@workstation] # yum install --enablerepo=rhel-7-server-extras-rpms -y cockpit cockpit-composer lorax-composer composer-cli
@@ -40,16 +41,16 @@ You can see in the **Image Builder** application that there are several blueprin
 
 * Filter the list of available components
 On the **Edit Blueprint** page, you can see contents that are already included in the blueprint in the panel labeled **Blueprint Components**. The panel labeled **Available Components** includes contents that can be added to the blueprint.
-Filter the list of **Available Components** by **mod_** to find the mod_wsgi package.
+Filter the list of **Available Components** by **mod_** to find the mod_ldap package.
 ![Image 3](https://github.com/marktonneson/demo-imagebuilder/blob/master/images/image3.png)
 
 * Add a package
-Find the **mod_wsgi** package in the filtered list of **Available Components**. You can either click the package list item to view more details and options available for the package, or you can click the Add icon button for the list item to add the latest version.
-Add the package **mod_wsgi** to the blueprint.
+Find the **mod_ldap** package in the filtered list of **Available Components**. You can either click the package list item to view more details and options available for the package, or you can click the Add icon button for the list item to add the latest version.
+Add the package **mod_ldap** to the blueprint.
 ![Image 4](https://github.com/marktonneson/demo-imagebuilder/blob/master/images/image4.png)
 
 * Commit changes
-Now that you have updated the contents of the blueprint, spend some time exploring the organization of the blueprint contents. Note that blueprint contents can also be filtered, and when contents are added, their dependencies are automatically pulled in. Try filtering the blueprint contents by "python" to see if python-libs was automatically included in the blueprint as a dependency. Or click the Undo button to see how the number of dependencies changed when you added mod_wsgi.
+Now that you have updated the contents of the blueprint, spend some time exploring the organization of the blueprint contents. Note that blueprint contents can also be filtered, and when contents are added, their dependencies are automatically pulled in. Try filtering the blueprint contents by **"ldap"** to see if **apr-util-ldap** was automatically included in the blueprint as a dependency. Or click the Undo button to see how the number of dependencies changed when you added mod_ldap.
 When you are ready, click the **Commit** button to commit your changes.
 ![Image 5](https://github.com/marktonneson/demo-imagebuilder/blob/master/images/image5.png)
 
@@ -65,6 +66,18 @@ When you are ready, click the **Commit** button in the dialog to commit your cha
 Click the **Create Image** button to open the dialog. Select which type to create then click the **Create** button.
 Images that are created for a blueprint can be found under the **Images** tab on the blueprint page. You can navigate to this page by clicking the blueprint name in the breadcrumb.
 ![Image 8](https://github.com/marktonneson/demo-imagebuilder/blob/master/images/image8.png)
+
+* Viewing progress
+Once the image creation process has started, view the progress in the Web Console by clicking on the **Logs** button.
+On the CLI, view progress via: (Pro-tip = enable bash completion first!)
+```
+[root@workstation] # source /etc/bash_completion.d/composer-cli
+[root@workstation] # watch composer-cli compose status
+```
+The actual image files, plus other relevant info are here: (the previous status command will show the GUID)
+```
+# /var/lib/lorax/composer/{GUID}/
+```
 
 * Optional: Cleanup environment
 If you are using a non-disposable system, cleanup the environment with the following commands:
