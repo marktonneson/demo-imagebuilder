@@ -69,6 +69,8 @@ Click on **example-http-server** to get back one level and then click on **Custo
 
 From here you can add a hostname and set the root password or add additional users as required.
 
+Click **Edit Packages** to go back to the previous screen.
+
 ![Image 5](https://github.com/marktonneson/demo-imagebuilder/blob/master/images/image5.png)
 
 #### Commit changes
@@ -103,7 +105,8 @@ Images that are created for a blueprint can be found under the **Images** tab on
 #### Viewing progress
 Once the image creation process has started, view the progress in the Web Console by clicking on the **Logs** button.
 
-On the CLI, view progress via: (Pro-tip = enable bash completion first!)
+On the CLI, view progress: 
+*Pro-tip = enable bash completion first*
 ```
 [root@workstation] # source /etc/bash_completion.d/composer-cli
 [root@workstation] # watch composer-cli compose status
