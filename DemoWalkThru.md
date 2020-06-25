@@ -6,7 +6,8 @@
 * Enough free disk space in root (/) for a complete image (~ 5GB)
 
 ### WalkThru
-* Install & Config
+
+#### Install & Config
 
 Prior to getting started with image builder, the software must first be installed.
 
@@ -59,38 +60,45 @@ Find the **mod_ldap** package in the filtered list of **Available Components**. 
 
 Add the package **mod_ldap** to the blueprint.
 
-**Note:** Due to package differences use mod_wsgi or mod_session for RHEL 7.
+**Note:** *Due to package differences use mod_wsgi or mod_session for RHEL 7.*
 
 ![Image 4](https://github.com/marktonneson/demo-imagebuilder/blob/master/images/image4.png)
+
+#### Customizations
+Click on **example-http-server** to get back one level and then click on **Customizations**
+
+From here you can add a hostname and set the root password or add additional users as required.
+
+![Image 5](https://github.com/marktonneson/demo-imagebuilder/blob/master/images/image5.png)
 
 #### Commit changes
 Now that you have updated the contents of the blueprint, spend some time exploring the organization of the blueprint contents. Note that blueprint contents can also be filtered, and when contents are added, their dependencies are automatically pulled in.
 
 Try filtering the blueprint contents by **"ldap"** to see if **apr-util-ldap** was automatically included in the blueprint as a dependency. Or click the Undo button to see how the number of dependencies changed when you added mod_ldap.
 
-**Note:** Due to package differences the dependencies will be different depending of if mod_wsgi (python_libs) or mod_session (apr-util-openssl) was used for RHEL 7.
+**Note:** *Due to package differences the dependencies will be different depending of if mod_wsgi (python_libs) or mod_session (apr-util-openssl) was used for RHEL 7.*
 
 When you are ready, click the **Commit** button to commit your changes.
 
-![Image 5](https://github.com/marktonneson/demo-imagebuilder/blob/master/images/image5.png)
+![Image 6](https://github.com/marktonneson/demo-imagebuilder/blob/master/images/image6.png)
 
 #### Verify pending changes
 The **Changes Pending Commit** dialog will list all changes you have made since you last committed your changes.
 
 When you are ready, click the **Commit** button in the dialog to commit your changes.
 
-![Image 6](https://github.com/marktonneson/demo-imagebuilder/blob/master/images/image6.png)
+![Image 7](https://github.com/marktonneson/demo-imagebuilder/blob/master/images/image7.png)
 
 * You will see a confirmation message appear in the top, right side of the web console window.
 
-![Image 7](https://github.com/marktonneson/demo-imagebuilder/blob/master/images/image7.png)
+![Image 8](https://github.com/marktonneson/demo-imagebuilder/blob/master/images/image8.png)
 
 #### Create image
 Click the **Create Image** button to open the dialog. Select which type to create then click the **Create** button.
 
 Images that are created for a blueprint can be found under the **Images** tab on the blueprint page. You can navigate to this page by clicking the blueprint name in the breadcrumb.
 
-![Image 8](https://github.com/marktonneson/demo-imagebuilder/blob/master/images/image8.png)
+![Image 9](https://github.com/marktonneson/demo-imagebuilder/blob/master/images/image9.png)
 
 #### Viewing progress
 Once the image creation process has started, view the progress in the Web Console by clicking on the **Logs** button.
@@ -106,7 +114,7 @@ The actual image files, plus other relevant info are here: (the previous status 
 # /var/lib/lorax/composer/results/{GUID}/
 ```
 
-* Optional: Cleanup environment
+#### Optional: Cleanup environment
 If you are using a non-disposable system, cleanup the environment with the following commands:
 ```
 [root@workstation] # yum remove -y cockpit cockpit-composer lorax-composer composer-cli
