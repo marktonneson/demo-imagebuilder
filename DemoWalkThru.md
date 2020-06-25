@@ -33,50 +33,73 @@ Lastly, in the next steps, you will use a non-administrative user, **student**, 
 ```
 * Log back into the Web Console
 Login using the student user, with password = redhat.  Now that you are logged into the Web Console, navigate to the **Image Builder** application.
+
 ![Image 1](https://github.com/marktonneson/demo-imagebuilder/blob/master/images/image1.png)
 
 * Navigate to the Edit Blueprint page
 You can see in the **Image Builder** application that there are several blueprints available. When you are ready, go to the edit page for the **example-http-server** blueprint by clicking the **Edit Blueprint** button.
+
 ![Image 2](https://github.com/marktonneson/demo-imagebuilder/blob/master/images/image2.png)
 
 * Filter the list of available components
 On the **Edit Blueprint** page, you can see contents that are already included in the blueprint in the panel labeled **Blueprint Components**. The panel labeled **Available Components** includes contents that can be added to the blueprint.
-Filter the list of **Available Components** by **mod_** to find the mod_ldap package.
+
+Filter the list of **Available Components** by **mod_** to find the **mod_ldap** package for RHEL 8.  
+
+**Note:** Due to package differences use mod_wsgi or mod_session for RHEL 7.
+
 ![Image 3](https://github.com/marktonneson/demo-imagebuilder/blob/master/images/image3.png)
 
 * Add a package
 Find the **mod_ldap** package in the filtered list of **Available Components**. You can either click the package list item to view more details and options available for the package, or you can click the Add icon button for the list item to add the latest version.
+
 Add the package **mod_ldap** to the blueprint.
+
+**Note:** Due to package differences use mod_wsgi or mod_session for RHEL 7.
+
 ![Image 4](https://github.com/marktonneson/demo-imagebuilder/blob/master/images/image4.png)
 
 * Commit changes
-Now that you have updated the contents of the blueprint, spend some time exploring the organization of the blueprint contents. Note that blueprint contents can also be filtered, and when contents are added, their dependencies are automatically pulled in. Try filtering the blueprint contents by **"ldap"** to see if **apr-util-ldap** was automatically included in the blueprint as a dependency. Or click the Undo button to see how the number of dependencies changed when you added mod_ldap.
+Now that you have updated the contents of the blueprint, spend some time exploring the organization of the blueprint contents. Note that blueprint contents can also be filtered, and when contents are added, their dependencies are automatically pulled in.
+
+Try filtering the blueprint contents by **"ldap"** to see if **apr-util-ldap** was automatically included in the blueprint as a dependency. Or click the Undo button to see how the number of dependencies changed when you added mod_ldap.
+
+**Note:** Due to package differences the dependencies will be different depending of if mod_wsgi (python_libs) or mod_session (apr-util-openssl) was used for RHEL 7.
+
 When you are ready, click the **Commit** button to commit your changes.
+
 ![Image 5](https://github.com/marktonneson/demo-imagebuilder/blob/master/images/image5.png)
 
 * Verify pending changes
 The **Changes Pending Commit** dialog will list all changes you have made since you last committed your changes.
+
 When you are ready, click the **Commit** button in the dialog to commit your changes.
+
 ![Image 6](https://github.com/marktonneson/demo-imagebuilder/blob/master/images/image6.png)
 
 * You will see a confirmation message appear in the top, right side of the web console window.
+
 ![Image 7](https://github.com/marktonneson/demo-imagebuilder/blob/master/images/image7.png)
 
 * Create image
 Click the **Create Image** button to open the dialog. Select which type to create then click the **Create** button.
+
 Images that are created for a blueprint can be found under the **Images** tab on the blueprint page. You can navigate to this page by clicking the blueprint name in the breadcrumb.
+
 ![Image 8](https://github.com/marktonneson/demo-imagebuilder/blob/master/images/image8.png)
 
 * Viewing progress
 Once the image creation process has started, view the progress in the Web Console by clicking on the **Logs** button.
+
 On the CLI, view progress via: (Pro-tip = enable bash completion first!)
 ```
 [root@workstation] # source /etc/bash_completion.d/composer-cli
 [root@workstation] # watch composer-cli compose status
 ```
+
 The actual image files, plus other relevant info are here: (the previous status command will show the GUID)
 ```
-# /var/lib/lorax/composer/{GUID}/
+# /var/lib/lorax/composer/results/{GUID}/
 ```
 
 * Optional: Cleanup environment
