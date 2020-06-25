@@ -24,3 +24,4 @@ Image Builder is a tool for creating custom system images. To control Image Buil
 * [RHEL 8 Documentation](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/system_design_guide/creating-system-images-with-composer-web-console-interface_system-design-guide)
 * [RHEL 7 Documentation](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/image_builder_guide/index)
 * [Lee Whitty's Image Builder Lab](https://github.com/lwhitty/image-builder-lab)
+* [Red Hat Labs - Image Builder](https://lab.redhat.com/imagebuilder)
